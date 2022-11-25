@@ -1,4 +1,4 @@
-# yt-dlp python downloader
+# YT-DLP PYTHON DOWNLOADER
 
 This program takes in multiple youtube links and will run yt-dlp.exe on those files. I only made this so I don't have to run "yt-dlp.exe -f bestaudio -x --audio-format mp3 [ytlink]" every time
 
