@@ -11,16 +11,17 @@ songlist = []
 # Setting completed to false for the while loop
 completed = False
 
+# The command for downloading the videos
+command = "yt-dlp.exe -f bestaudio -x --audio-format mp3 "
+
 # Giant text that will display when opened in the terminal
 print(r"""
-
 ██╗░░░██╗████████╗░░░░░░██████╗░██╗░░░░░██████╗░
 ╚██╗░██╔╝╚══██╔══╝░░░░░░██╔══██╗██║░░░░░██╔══██╗
 ░╚████╔╝░░░░██║░░░█████╗██║░░██║██║░░░░░██████╔╝
 ░░╚██╔╝░░░░░██║░░░╚════╝██║░░██║██║░░░░░██╔═══╝░
 ░░░██║░░░░░░██║░░░░░░░░░██████╔╝███████╗██║░░░░░
 ░░░╚═╝░░░░░░╚═╝░░░░░░░░░╚═════╝░╚══════╝╚═╝░░░░░
-
 ██████╗░░█████╗░░██╗░░░░░░░██╗███╗░░██╗██╗░░░░░░█████╗░░█████╗░██████╗░███████╗██████╗░  ░░███╗░░░░░░█████╗░
 ██╔══██╗██╔══██╗░██║░░██╗░░██║████╗░██║██║░░░░░██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗  ░████║░░░░░██╔══██╗
 ██║░░██║██║░░██║░╚██╗████╗██╔╝██╔██╗██║██║░░░░░██║░░██║███████║██║░░██║█████╗░░██████╔╝  ██╔██║░░░░░██║░░██║
@@ -43,10 +44,12 @@ while completed == False:
 # !!!You need to change this to wherever your yt-dlp exe is.!!!
 os.chdir(r'C:\ytdl')
 
-# For every link in the list, run the yt-dlp command.
-for items in songlist:
-    command = "yt-dlp.exe -f bestaudio -x --audio-format mp3 " + items
-    os.system(command)
+# For every link in the list, add it to the end of the command
+for item in songlist:
+    command += " " + item
+
+# Run the command that'll download
+os.system(command)
 
 # Once the downloads are done, open the folder with the songs
 os.system('"start ."')
